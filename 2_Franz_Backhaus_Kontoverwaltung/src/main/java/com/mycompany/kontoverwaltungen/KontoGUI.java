@@ -5,7 +5,7 @@
  */
 package com.mycompany.kontoverwaltungen;
 
-import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,13 +14,11 @@ import java.util.Random;
 public class KontoGUI extends javax.swing.JFrame {
 
     private Konto k;
-    private Random rand;
     
     public KontoGUI() {
         initComponents();
-        jList1.setModel(k);
-        rand = new Random();
-        k = new Konto(jLabel1, jTextArea1);
+        liBenutzer.setModel(k);
+        k = new Konto(lbMoney, taTransactions);
     }
 
     /**
@@ -37,12 +35,12 @@ public class KontoGUI extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         plCenter = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        liBenutzer = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taTransactions = new javax.swing.JTextArea();
         plSouth = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbMoney = new javax.swing.JLabel();
 
         jMenuItem1.setText("add");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,17 +68,17 @@ public class KontoGUI extends javax.swing.JFrame {
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(120, 152));
 
-        jList1.setComponentPopupMenu(jPopupMenu1);
-        jList1.setPreferredSize(new java.awt.Dimension(100, 90));
-        jScrollPane1.setViewportView(jList1);
+        liBenutzer.setComponentPopupMenu(jPopupMenu1);
+        liBenutzer.setPreferredSize(new java.awt.Dimension(100, 90));
+        jScrollPane1.setViewportView(liBenutzer);
 
         plCenter.add(jScrollPane1, java.awt.BorderLayout.WEST);
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Log-output"));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        taTransactions.setColumns(20);
+        taTransactions.setRows(5);
+        jScrollPane2.setViewportView(taTransactions);
 
         plCenter.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
@@ -92,10 +90,10 @@ public class KontoGUI extends javax.swing.JFrame {
         jLabel1.setPreferredSize(new java.awt.Dimension(160, 16));
         plSouth.add(jLabel1, java.awt.BorderLayout.WEST);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("1000,00 Euro");
-        plSouth.add(jLabel2, java.awt.BorderLayout.CENTER);
+        lbMoney.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbMoney.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbMoney.setText("1000,00 Euro");
+        plSouth.add(lbMoney, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(plSouth, java.awt.BorderLayout.SOUTH);
 
@@ -103,7 +101,14 @@ public class KontoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void onAddBenutzer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onAddBenutzer
-        
+        String name = JOptionPane.showInputDialog(this, "Wie lautet der Name des neuen Benutzers?", "Eingabe benötigt", JOptionPane.QUESTION_MESSAGE);
+        if (name != null) {
+            if (!name.isEmpty()) {
+                k.add(new KontoBenutzer(name));
+            } else {
+                JOptionPane.showMessageDialog(this, "Sie müssen einen Namen eingeben!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_onAddBenutzer
 
     private void onTesten(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onTesten
@@ -147,15 +152,15 @@ public class KontoGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbMoney;
+    private javax.swing.JList<String> liBenutzer;
     private javax.swing.JPanel plCenter;
     private javax.swing.JPanel plSouth;
+    private javax.swing.JTextArea taTransactions;
     // End of variables declaration//GEN-END:variables
 }

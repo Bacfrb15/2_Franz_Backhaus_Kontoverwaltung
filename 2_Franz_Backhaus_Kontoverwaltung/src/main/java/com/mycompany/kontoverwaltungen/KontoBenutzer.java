@@ -14,13 +14,10 @@ import java.util.Random;
 public class KontoBenutzer implements Runnable{
 
     private String name;
-    private Random rand;
     private Konto konto;
 
-    public KontoBenutzer(String name, Random rand, Konto konto) {
+    public KontoBenutzer(String name ) {
         this.name = name;
-        this.rand = rand;
-        this.konto = konto;
     }
     
     @Override

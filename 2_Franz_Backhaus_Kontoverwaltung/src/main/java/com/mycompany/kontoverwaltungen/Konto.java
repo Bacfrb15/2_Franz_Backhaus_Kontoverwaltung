@@ -14,23 +14,24 @@ public class Konto extends AbstractListModel{
     private JTextArea actions;
 
     public Konto(JLabel money, JTextArea actions) {
-        list = new ArrayList<>();
         this.moneyLabel = money;
         this.actions = actions;
-        this.waitingThreads = 0;
     }
     
-    
-    
-
     @Override
     public int getSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return list.size();
     }
 
     @Override
     public Object getElementAt(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return list.get(index);
+    
+    }
+
+    public void add(KontoBenutzer kontoBenutzer) {
+        list.add(kontoBenutzer);
+        this.fireContentsChanged(this, 0, list.size());
     }
 
 }
