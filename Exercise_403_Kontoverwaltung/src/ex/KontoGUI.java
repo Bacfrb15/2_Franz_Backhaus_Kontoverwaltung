@@ -42,12 +42,8 @@ public class KontoGUI extends javax.swing.JFrame {
         plCenter.setLayout(new java.awt.BorderLayout());
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Log"));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(120, 152));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jList1.setPreferredSize(new java.awt.Dimension(100, 90));
         jScrollPane1.setViewportView(jList1);
 
@@ -71,7 +67,7 @@ public class KontoGUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("50,00 Euro");
+        jLabel2.setText("1000,00 Euro");
         plSouth.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(plSouth, java.awt.BorderLayout.SOUTH);

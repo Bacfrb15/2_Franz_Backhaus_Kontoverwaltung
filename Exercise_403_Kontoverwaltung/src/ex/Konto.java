@@ -9,6 +9,12 @@ package ex;
  *
  * @author franz
  */
-public class Konto {
+public class Konto implements Runnable{
+
+    @Override
+    public void run() 
+    {
+    
+    }
     
 }
